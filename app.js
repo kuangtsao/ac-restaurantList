@@ -36,7 +36,7 @@ app.get('/search', (req, res) => {
   if (information.length === 0) {
     res.render('index', { restaurants: restaurantList.results })
   } else {
-    res.render('index', { restaurant: information})
+    res.render('index', { restaurants: information })
   }
 })
 app.listen(port, () => {
