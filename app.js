@@ -20,7 +20,11 @@ app.get('/', (req, res) => {
 })
 // 餐廳資料
 app.get('/restaurants/:restaurantId', (req, res) => {
-  res.render('restaurantinfo')
+  const restaurant = restaurantList.results.find(function findRestaurantName(restaurant) {
+    return restaurant.id.toString() === req.params.restaurantId
+  })
+  res.render('restaurantinfo', { restaurant: restaurant })
+  
 })
 // 搜尋
 app.listen(port, () => {
