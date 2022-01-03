@@ -8,12 +8,14 @@ const exphbs = require('express-handlebars')
 app.set('view engine', 'handlebars')
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 // import local static files
+// css 和 js
 app.use(express.static('public'))
-
+// 餐廳清單
+const restaurantList = require('./restaurant.json')
 
 // route setting
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', { restaurants: restaurantList.results })
 })
 
 app.listen(port, () => {
