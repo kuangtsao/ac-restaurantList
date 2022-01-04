@@ -40,10 +40,10 @@ app.get('/search', (req, res) => {
   // 搜尋時會重複多次 search 路由，所以每次進入都要重新管理 findingStatus 的狀態
   if (information.length > 0) {
     findingStatus = true
-    res.render('index', { restaurants: information, findingStatus: findingStatus })
+    res.render('index', { restaurants: information, findingStatus: findingStatus, keyword: keyword})
   } else {
     findingStatus = false
-    res.render('index', { restaurants: restaurantList.results, findingStatus: findingStatus })
+    res.render('index', { restaurants: restaurantList.results, findingStatus: findingStatus, keyword: keyword })
   }
 })
 app.listen(port, () => {
