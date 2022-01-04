@@ -47,5 +47,5 @@ app.get('/search', (req, res) => {
   }
 })
 app.listen(port, () => {
-  console.log(`Express is running on http://localhost:${port}`)
+  console.log(`ac-restaurantList is running on http://localhost:${port}`)
 })
