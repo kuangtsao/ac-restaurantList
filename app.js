@@ -31,7 +31,7 @@ app.get('/search', (req, res) => {
   // 搜尋字串去除空白
   const keyword = req.query.keyword.trim()
   // 只要關鍵字符合其中一個，就返回內容到陣列
-  const information = restaurantList.results.filter(infomation => infomation.category.includes(keyword) || infomation.name.includes(keyword) || infomation.name_en.toLowerCase().includes(keyword.toLowerCase()))
+  const information = restaurantList.results.filter(information => information.category.includes(keyword) || information.name.includes(keyword) || information.name_en.toLowerCase().includes(keyword.toLowerCase()))
 
   if (information.length === 0) {
     res.render('index', { restaurants: restaurantList.results })
