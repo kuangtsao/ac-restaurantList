@@ -15,9 +15,19 @@
     </div>
   </div>
 </div>
-
+<!-- warning -->
+<!-- 找不到結果時才 render 警告區塊  -->
+{{#unless findingStatus}}
+<div class="container mt-4">
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <i class="fas fa-exclamation-triangle fa-lg"></i>
+    <strong>找不到餐廳！</strong> 請重新考慮關鍵字！(餐廳中英文名字或類別)
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
+{{/unless}}
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row">
     {{#each restaurants}}
     <div class="col-md-4 col-4">
