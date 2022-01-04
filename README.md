@@ -45,3 +45,7 @@ $ npm install nodemon
 [project path] $ npm run dev
 [project path] $ nodemon app.js
 ```
+只要有看到這個訊息，就可以到瀏覽器輸入 `http://localhost:3000`，就可以使用該專案功能
+```
+ac-restaurantList is running on http://localhost:3000
+```
