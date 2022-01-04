@@ -33,7 +33,7 @@ app.get('/restaurants/:restaurantId', (req, res) => {
 // 搜尋
 app.get('/search', (req, res) => {
   // 搜尋字串去除空白
-  const keyword = req.query.keyword.trim()
+  const keyword = req.query.keyword.split(' ').join('')
   // 只要關鍵字符合其中一個，就返回內容到陣列
   const information = restaurantList.results.filter(information => information.category.includes(keyword) || information.name.includes(keyword) || information.name_en.toLowerCase().includes(keyword.toLowerCase()))
 
