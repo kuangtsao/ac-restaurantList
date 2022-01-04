@@ -18,9 +18,11 @@
 <!-- warning -->
 <!-- 找不到結果時才 render 警告區塊  -->
 {{#unless findingStatus}}
-<div class="alert alert-warning alert-dismissible fade show mt-4" role="alert">
-  <strong>找不到餐廳！</strong> 請重新考慮關鍵字！(餐廳中英文名字或類別！)
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container mt-4">
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    <strong>找不到餐廳！</strong> 請重新考慮關鍵字！(餐廳中英文名字或類別)
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 </div>
 {{/unless}}
 <!-- restaurant list -->
