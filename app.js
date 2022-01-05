@@ -32,8 +32,7 @@ app.get('/restaurants/:restaurantId', (req, res) => {
 
 // 搜尋
 app.get('/search', (req, res) => {
-
-  // 原始的 keyword
+  // 保留原始的搜尋字串
   const originKeyword = req.query.keyword
   // 搜尋字串去除空白
   const keyword = originKeyword.split(' ').join('')
