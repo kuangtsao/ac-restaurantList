@@ -45,7 +45,7 @@ app.get('/search', (req, res) => {
     res.render('index', { restaurants: information, findingStatus: findingStatus, keyword: originKeyword})
   } else {
     findingStatus = false
-    res.render('index', { restaurants: restaurantList.results, findingStatus: findingStatus, keyword: originKeyword })
+    res.redirect("/")
   }
 })
 app.listen(port, () => {
