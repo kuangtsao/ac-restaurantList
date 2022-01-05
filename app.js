@@ -32,18 +32,21 @@ app.get('/restaurants/:restaurantId', (req, res) => {
 
 // 搜尋
 app.get('/search', (req, res) => {
+
+  // 原始的 keyword
+  const originKeyword = req.query.keyword
   // 搜尋字串去除空白
-  const keyword = req.query.keyword.split(' ').join('')
+  const keyword = originKeyword.split(' ').join('')
   // 只要關鍵字符合其中一個，就返回內容到陣列
-  const information = restaurantList.results.filter(information => information.category.includes(keyword) || information.name.includes(keyword) || information.name_en.toLowerCase().includes(keyword.toLowerCase()))
+  const information = restaurantList.results.filter(information => information.category.includes(keyword) || information.name.includes(keyword) || information.name_en.toLowerCase().includes(keyword))
 
   // 搜尋時會重複多次 search 路由，所以每次進入都要重新管理 findingStatus 的狀態
   if (information.length > 0) {
     findingStatus = true
-    res.render('index', { restaurants: information, findingStatus: findingStatus, keyword: keyword})
+    res.render('index', { restaurants: information, findingStatus: findingStatus, keyword: originKeyword})
   } else {
     findingStatus = false
-    res.render('index', { restaurants: restaurantList.results, findingStatus: findingStatus, keyword: keyword })
+    res.render('index', { restaurants: restaurantList.results, findingStatus: findingStatus, keyword: originKeyword })
   }
 })
 app.listen(port, () => {
