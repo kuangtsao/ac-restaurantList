@@ -31,10 +31,10 @@ app.get('/restaurants/:restaurantId', (req, res) => {
 app.get('/search', (req, res) => {
   // 保留原始的搜尋字串
   const originKeyword = req.query.keyword
-  // 搜尋字串去除空白
-  const keyword = originKeyword.split(' ').join('')
+  // 搜尋字串去除空白與所有關鍵字小寫
+  const keyword = originKeyword.split(' ').join('').toLowerCase()
   // 只要關鍵字符合其中一個，就返回內容到陣列
-  const information = restaurantList.results.filter(information => information.category.includes(keyword) || information.name.includes(keyword) || information.name_en.toLowerCase().includes(keyword))
+  const information = restaurantList.results.filter(info => (info.category + info.name + info.name_en.split(' ').join('')).toLowerCase().includes(keyword))
 
   // 搜尋時會重複多次 search 路由，所以每次進入都要重新管理 findingStatus 的狀態
   if (information.length > 0) {
