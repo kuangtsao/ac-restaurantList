@@ -13,13 +13,10 @@ app.use(express.static('public'))
 // 餐廳清單
 const restaurantList = require('./restaurant.json')
 
-// 管理搜尋是否找到餐廳的 flag，一開始先當作有找到，提供給 index.handlebars 去作警告渲染
-let findingStatus = true
-
 // route setting
 // 首頁
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results, findingStatus: findingStatus })
+  res.render('index', { restaurants: restaurantList.results, findingStatus: true })
 })
 
 // 餐廳資料
@@ -41,11 +38,9 @@ app.get('/search', (req, res) => {
 
   // 搜尋時會重複多次 search 路由，所以每次進入都要重新管理 findingStatus 的狀態
   if (information.length > 0) {
-    findingStatus = true
-    res.render('index', { restaurants: information, findingStatus: findingStatus, keyword: originKeyword})
+    res.render('index', { restaurants: information, findingStatus: true, keyword: originKeyword})
   } else {
-    findingStatus = false
-    res.redirect("/")
+    res.render('index', { restaurants: restaurantList.results, findingStatus: false, keyword: originKeyword})
   }
 })
 app.listen(port, () => {
