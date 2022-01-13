@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  mongo:
+    image: mongo:4.2.18-bionic
+    restart: always
+    container_name: mongo-server
+    volumes:
+    - ./mongodb/configdb:/data/configdb
+    - ./mongodb/db:/data/db
+    ports:
+    - 27017:27017

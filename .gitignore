@@ -108,3 +108,6 @@ dist
 
 # lab file
 lab.js
+
+# mongodb data
+mongodb/*db
