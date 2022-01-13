@@ -11,7 +11,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // css 和 js
 app.use(express.static('public'))
 // 餐廳清單
-// const restaurantList = require('./restaurant.json')
+const restaurantList = require('./restaurant.json')
 
 // import mongodb
 const mongoose = require('mongoose')
@@ -34,7 +34,9 @@ const Restaurant = require('./models/restaurant')
 // route setting
 // 首頁
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results, findingStatus: true })
+  Restaurant.find().lean()
+    .then(restaurants => res.render('index', { restaurants, findingStatus: true }))
+    .catch(error => console.error(error))
 })
 
 // 餐廳資料
