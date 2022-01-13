@@ -11,7 +11,25 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // css 和 js
 app.use(express.static('public'))
 // 餐廳清單
-const restaurantList = require('./restaurant.json')
+// const restaurantList = require('./restaurant.json')
+
+// import mongodb
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,useUnifiedTopology: true })
+
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+db.on('open', () => {
+  console.log('mongodb is connected.')
+})
+
+// 載入 restaurant model
+const Restaurant = require('./models/restaurant')
 
 // route setting
 // 首頁
