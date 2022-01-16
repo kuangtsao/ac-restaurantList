@@ -10,8 +10,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // import local static files
 // css 和 js
 app.use(express.static('public'))
-// 餐廳清單
-const restaurantList = require('./restaurant.json')
+// 所有餐廳清單
+let restaurantList = []
 
 // import body parser
 app.use(express.urlencoded({ extended: true }))
@@ -37,8 +37,11 @@ const Restaurant = require('./models/restaurant')
 // route setting
 // 首頁
 app.get('/', (req, res) => {
-  Restaurant.find().lean()
-    .then(restaurants => res.render('index', { restaurants, findingStatus: true }))
+  return Restaurant.find().lean()
+    .then(restaurants => {
+      restaurantList = restaurants
+      res.render('index', { restaurants, findingStatus: true })
+    })
     .catch(error => console.error(error))
 })
 
@@ -61,9 +64,9 @@ app.get('/search', (req, res) => {
   }).lean()
     .then(info => {
       if (info.length > 0) {
-        res.render('index', { restaurants: info, findingStatus: true, keyword: originKeyword})
+        res.render('index', { restaurants: info, findingStatus: true, keyword: originKeyword })
       } else {
-        res.render('index', { restaurants: restaurantList.results, findingStatus: false, keyword: originKeyword})
+        res.render('index', { restaurants: restaurantList, findingStatus: false, keyword: originKeyword })
       }
     })
      .catch(error => console.error(error))
