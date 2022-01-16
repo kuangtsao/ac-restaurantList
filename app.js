@@ -55,9 +55,7 @@ app.get('/search', (req, res) => {
   const originKeyword = req.query.keyword
   // 搜尋字串去除空白與所有關鍵字小寫
   const keyword = originKeyword.split(' ').join('').toLowerCase()
-  // 只要關鍵字符合其中一個，就返回內容到陣列
   // 利用 mongoose 下 category || name || name_en
-  // name_en 還是需要下 toLowerCase
   return Restaurant.find({
     $or: [{ category: { $regex: keyword } }, { name: { $regex: keyword } }, { name_en: { $regex: keyword, $options: 'i' }}]
   }).lean()
@@ -69,9 +67,6 @@ app.get('/search', (req, res) => {
       }
     })
      .catch(error => console.error(error))
-  // const information = restaurantList.results.filter(info => (info.category + info.name + info.name_en.split(' ').join('')).toLowerCase().includes(keyword))
-
-
 })
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
