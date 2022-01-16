@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 
 // 餐廳資料
 app.get('/restaurants/:restaurantId', (req, res) => {
-  return Restaurant.findOne({ id: req.params.restaurantId }).lean()
+  return Restaurant.findOne({ _id: req.params.restaurantId }).lean()
     .then(restaurant => res.render('restaurantinfo', { restaurant }))
     .catch(error => console.error(error))
 })
