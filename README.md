@@ -51,6 +51,12 @@ $ which docker-compose
 ```
 [project path] $ docker-compose up -d
 ```
+
+5. 注入種子資料
+請先確認是否還在 clone 下來的路徑
+```
+[project path] $ npm run seed
+```
 ## 啟動專案
 挑一個喜歡的
 ```
