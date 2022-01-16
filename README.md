@@ -69,3 +69,10 @@ $ which docker-compose
 ```
 ac-restaurantList is running on http://localhost:3000
 ```
+## 開發工具
+- node 14.16.0
+- express 4.16.4
+- express-handlebars 3.0.2
+- bootstrap 5.0.2
+- fontaweson 5.8.1
+- mongoose 6.1.6
