@@ -37,6 +37,20 @@ $ which nodemon
 $ npm install nodemon
 # 如果要讓他變成到處都可以用，多帶一個 -g 的 flag
 ```
+
+4. 啟動 mongodb container(optional)
+如果已經有裝 mongo 4.2 版，或者不喜歡 container 的可以跳過  
+先確認自己有沒有裝 docker 和 docker-compose
+```
+$ which docker
+$ which docker-compose
+```
+如果沒有出現路徑，可以參考 [docker installation guide](https://docs.docker.com/compose/install/) 安裝  
+
+利用 docker-compose 開啟  
+```
+[project path] $ docker-compose up -d
+```
 ## 啟動專案
 挑一個喜歡的
 ```

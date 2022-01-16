@@ -21,6 +21,7 @@
   "homepage": "https://github.com/kuangtsao/ac-restaurantList#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "express-handlebars": "^3.0.2"
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^6.1.6"
   }
 }
