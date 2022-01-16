@@ -58,19 +58,20 @@ app.get('/search', (req, res) => {
   // 只要關鍵字符合其中一個，就返回內容到陣列
   // 利用 mongoose 下 category || name || name_en
   // name_en 還是需要下 toLowerCase
-  const information = Restaurant.find({
+  return Restaurant.find({
     $or: [{ category: { $regex: keyword } }, { name: { $regex: keyword } }, { name_en: { $regex: keyword, $options: 'i' }}]
   }).lean()
-    .then(items => {
-      console.log('items', items)
+    .then(info => {
+      if (info.length > 0) {
+        res.render('index', { restaurants: info, findingStatus: true, keyword: originKeyword})
+      } else {
+        res.render('index', { restaurants: restaurantList.results, findingStatus: false, keyword: originKeyword})
+      }
     })
+     .catch(error => console.error(error))
   // const information = restaurantList.results.filter(info => (info.category + info.name + info.name_en.split(' ').join('')).toLowerCase().includes(keyword))
 
-  if (information.length > 0) {
-    res.render('index', { restaurants: information, findingStatus: true, keyword: originKeyword})
-  } else {
-    res.render('index', { restaurants: restaurantList.results, findingStatus: false, keyword: originKeyword})
-  }
+
 })
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
