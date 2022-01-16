@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }))
 // import mongodb
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection
 
@@ -60,7 +60,7 @@ app.get('/search', (req, res) => {
   const keyword = originKeyword.split(' ').join('').toLowerCase()
   // 利用 mongoose 下 category || name || name_en
   return Restaurant.find({
-    $or: [{ category: { $regex: keyword } }, { name: { $regex: keyword } }, { name_en: { $regex: keyword, $options: 'i' }}]
+    $or: [{ category: { $regex: keyword } }, { name: { $regex: keyword } }, { name_en: { $regex: keyword, $options: 'i' } }]
   }).lean()
     .then(info => {
       if (info.length > 0) {
@@ -69,7 +69,7 @@ app.get('/search', (req, res) => {
         res.render('index', { restaurants: restaurantList, findingStatus: false, keyword: originKeyword })
       }
     })
-     .catch(error => console.error(error))
+    .catch(error => console.error(error))
 })
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
