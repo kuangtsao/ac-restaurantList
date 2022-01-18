@@ -71,6 +71,11 @@ app.get('/search', (req, res) => {
     })
     .catch(error => console.error(error))
 })
+
+// 新增餐廳相關
+app.get('/new', (req, res) => {
+  return res.render('new')
+})
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
 })
