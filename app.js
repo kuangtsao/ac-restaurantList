@@ -73,12 +73,16 @@ app.get('/search', (req, res) => {
 })
 
 // 新增餐廳相關
+// 渲染新增頁面
 app.get('/new', (req, res) => {
   return res.render('new')
 })
 
+// 新增表單 post 相關邏輯 
 app.post('/new', (req, res) => {
-  console.log('request body', req.body)
+  return Restaurant.create(req.body)
+    .then(() => res.redirect('/'))
+    .catch(error => console.error(error))
 })
 
 app.listen(port, () => {
