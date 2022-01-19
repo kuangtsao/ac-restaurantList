@@ -1,13 +1,17 @@
 <h1 class="mb-1 restaurant-new-title">新增餐廳</h1>
 <div class="container">
-  <form action="/new" method="post">
+  <form action="/new" id="form" method="post" novalidate>
     <div class="mb-3">
       <label for="restaurant-id" class="form-label">餐廳 ID</label>
-      <input type="text" class="form-control" name="id" id="restaurant-id" placeholder="1">
+      <input type="text" class="form-control" name="id" id="restaurant-id" placeholder="1" required>
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="restaurant-name" class="form-label">餐廳名稱</label>
-      <input type="text" class="form-control" id="restaurant-name" name="name" placeholder="盧布朗咖啡">
+      <input type="text" class="form-control" id="restaurant-name" name="name" placeholder="盧布朗咖啡" required>
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="restaurant-en-name" class="form-label">餐廳英文名稱</label>
@@ -16,7 +20,7 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-category" class="form-label">分類</label>
-      <select name="category" id="restaurant-category" class="form-select">
+      <select name="category" id="restaurant-category" class="form-select" required>
         <option selected>選擇一種類別</option>
         <option value="中東料理">中東料理</option>
         <option value="日本料理">日本料理</option>
@@ -28,6 +32,8 @@
         <option value="咖啡">咖啡</option>
         <option value="其他">其他</option>
       </select>
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="restaurant-image" class="form-label">圖片</label>
@@ -35,11 +41,15 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-location" class="form-label">地址</label>
-      <input type="text" class="form-control" name="location" id="restaurant-location" placeholder="餐廳地址">
+      <input type="text" class="form-control" name="location" id="restaurant-location" placeholder="餐廳地址" required>
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="restaurant-phone" class="form-label">電話</label>
-      <input type="text" class="form-control" name="phone"  id="restaurant-phone" placeholder="餐廳電話">
+      <input type="text" class="form-control" name="phone"  id="restaurant-phone" placeholder="餐廳電話" required>
+      <div class="valid-feedback"></div>
+      <div class="invalid-feedback"></div>
     </div>
     <div class="mb-3">
       <label for="restaurant-map" class="form-label">Google 地圖</label>
@@ -53,7 +63,7 @@
       <label for="restaurant-description" class="form-label">餐廳介紹</label>
       <textarea name="description" id="restaurant-description" rows="5" class="form-control" placeholder="坐落於四軒茶屋的一處清靜的小巷，具有昭和復古感的裝潢，襯托著咖啡的香氣..."></textarea>
     </div>
-    <button class="btn btn-success" type="submit">確定新增</button>
+    <button id="submit-btn" class="btn btn-success" type="submit">確定新增</button>
     <a href="/" class="btn btn-primary">返回首頁</a>
   </form>
 </div>

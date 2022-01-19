@@ -76,6 +76,11 @@ app.get('/search', (req, res) => {
 app.get('/new', (req, res) => {
   return res.render('new')
 })
+
+app.post('/new', (req, res) => {
+  console.log('request body', req.body)
+})
+
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
 })
