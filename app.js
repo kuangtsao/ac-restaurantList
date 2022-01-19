@@ -85,6 +85,16 @@ app.post('/new', (req, res) => {
     .catch(error => console.error(error))
 })
 
+// 編輯餐廳相關
+// 渲染編輯頁面
+app.get('/restaurants/edit/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.error(error))
+})
+
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
 })
