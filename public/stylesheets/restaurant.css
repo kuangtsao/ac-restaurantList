@@ -2,11 +2,11 @@ header {
   overflow: hidden;
 }
 
-.navbar .navbar-brand {
+.navbar .navbar-brand,.navbar .btn-outline-light {
   color: #4592af;
 }
 
-.navbar .navbar-brand:hover {
+.navbar .navbar-brand:hover,.navbar .btn-outline-light:hover {
   color: #226089;
 }
 
@@ -69,7 +69,7 @@ header {
   font-size: 0.8rem;
 }
 
-.restaurant-show-title {
+.restaurant-show-title, .restaurant-new-title {
   position: relative;
   top: -100px;
   color: white;

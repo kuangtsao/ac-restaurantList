@@ -31,7 +31,7 @@
   <div class="row">
     {{#each restaurants}}
     <div class="col-md-4 col-4">
-      <a href="/restaurants/{{ this.id }}" class="text-secondary">
+      <a href="/restaurants/{{ this._id }}" class="text-secondary">
         <div class="card mb-3">
           <img class="card-img-top" src="{{ this.image }}"
               alt="{{ this.name }}">
@@ -46,7 +46,12 @@
             </span>
           </div>
         </div>
-        </a> 
+        </a>
+        <div class="text-end mb-2">
+          <a href="/restaurants/edit/{{ this._id }}" class="btn btn-link px-1" id="edit">edit</a>
+          <a href="/restaurants/{{ this._id }}" class="btn btn-link px-1" id="detail">detail</a>
+          <a href="/restaurants/delete/{{ this._id }}" class="btn btn-primary" id="delete">delete</a>
+        </div>
     </div>
     {{/each}}
   </div>
