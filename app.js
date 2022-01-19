@@ -100,6 +100,28 @@ app.get('/restaurants/edit/:id', (req, res) => {
     .catch(error => console.error(error))
 })
 
+// 實作編輯功能
+// 暫時找不到原本 json 檔裡的數字 id 怎麽轉，先放著不修(這應該是原始資料設計的問題)，之後重構再弄
+app.post('/restaurants/edit/:id', (req, res) => {
+  const id = req.params.id
+  const {productId, name, name_en, category, image, location, phone, google_map, rating, description} = req.body
+  Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.name_en = name_en
+      restaurant.category = category
+      restaurant.image = image
+      restaurant.location = location
+      restaurant.phone = phone
+      restaurant.google_map = google_map
+      restaurant.rating = rating
+      restaurant.description = description
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.error(error))
+})
+
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
 })
