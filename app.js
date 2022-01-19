@@ -5,8 +5,13 @@ const port = 3000
 
 // import and setting handlebars
 const exphbs = require('express-handlebars')
+const hbshelpers = require('handlebars-helpers')
+const multihelpers = hbshelpers()
 app.set('view engine', 'handlebars')
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+  helpers: multihelpers, 
+  defaultLayout: 'main'
+ }))
 // import local static files
 // css 和 js
 app.use(express.static('public'))

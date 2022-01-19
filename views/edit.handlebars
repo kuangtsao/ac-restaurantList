@@ -20,17 +20,15 @@
     <div class="mb-3">
       <label for="restaurant-category" class="form-label">分類</label>
       <select name="category" id="restaurant-category" class="form-select" required>
-        <!-- 暫時還不知道怎麽用 handlebars 作 selected -->
-        <option selected>選擇一種類別</option>
-        <option value="中東料理">中東料理</option>
-        <option value="日本料理">日本料理</option>
-        <option value="義式餐廳">義式餐廳</option>
-        <option value="美式餐廳">美式餐廳</option>
-        <option value="台灣料理">台灣料理</option>
-        <option value="中國料理">中國料理</option>
-        <option value="酒吧">酒吧</option>
-        <option value="咖啡">咖啡</option>
-        <option value="其他">其他</option>
+        <option value="中東料理" {{#is restaurant.category '中東料理' }} selected {{/is}}>中東料理</option>
+        <option value="日本料理" {{#is restaurant.category '日本料理' }} selected {{/is}}>日本料理</option>
+        <option value="義式餐廳" {{#is restaurant.category '義式料理' }} selected {{/is}}>義式餐廳</option>
+        <option value="美式餐廳" {{#is restaurant.category '美式料理' }} selected {{/is}}>美式餐廳</option>
+        <option value="台灣料理" {{#is restaurant.category '台灣料理' }} selected {{/is}}>台灣料理</option>
+        <option value="中國料理" {{#is restaurant.category '中國料理' }} selected {{/is}}>中國料理</option>
+        <option value="酒吧" {{#is restaurant.category '酒吧' }} selected {{/is}}>酒吧</option>
+        <option value="咖啡" {{#is restaurant.category '咖啡' }} selected {{/is}}>咖啡</option>
+        <option value="其他" {{#is restaurant.category '其他' }} selected {{/is}}>其他</option>
       </select>
       <div class="valid-feedback"></div>
       <div class="invalid-feedback"></div>
