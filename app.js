@@ -122,6 +122,15 @@ app.post('/restaurants/edit/:id', (req, res) => {
     .catch(error => console.error(error))
 })
 
+// 實作刪除功能
+app.get('/restaurants/delete/:id', (req, res) => {
+  const id = req.params.id
+  Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)
 })
