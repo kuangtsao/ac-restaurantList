@@ -13,6 +13,19 @@
         </div>
       </form>
     </div>
+    <form action="/" method="post">
+      <div class="my-2">
+        <label for="select-sort" class="form-label">
+          <h4>Sort By</h4>
+          </label>
+        <select id="select-sort" name="sortOp" class="form-select" onchange="this.form.submit()">
+          <option value="1" {{#is sortOption '1' }} selected {{/is}}>A -> Z</option>
+          <option value="2" {{#is sortOption '2' }} selected {{/is}}>Z -> A</option>
+          <option value="3" {{#is sortOption '3' }} selected {{/is}}>地區</option>
+          <option value="4" {{#is sortOption '4' }} selected {{/is}}>類別</option>
+        </select>
+      </div>
+    </form>  
   </div>
 </div>
 <!-- warning -->
