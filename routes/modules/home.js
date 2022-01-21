@@ -13,11 +13,11 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-// 首頁 sort by 
+// 首頁 sort by
 router.post('/', (req, res) => {
   const sortOption = req.body.sortOp
   let sortObject
-  switch(sortOption) {
+  switch (sortOption) {
     case '1':
       sortObject = { name_en: 'asc' }
       break
@@ -29,6 +29,7 @@ router.post('/', (req, res) => {
       break
     case '4':
       sortObject = { category: 'desc' }
+      break
     default:
       sortObject = { _id: 'asc' }
   }
@@ -56,7 +57,7 @@ router.get('/search', (req, res) => {
       if (info.length > 0) {
         res.render('index', { restaurants: info, findingStatus: true, keyword: originKeyword })
       } else {
-        res.render('index', { restaurants: restaurantList, findingStatus: false, keyword: originKeyword })
+        res.render('index', { restaurants: info , findingStatus: false, keyword: originKeyword })
       }
     })
     .catch(error => console.error(error))

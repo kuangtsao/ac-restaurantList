@@ -17,7 +17,7 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
-// 新增表單 post 相關邏輯 
+// 新增表單 post 相關邏輯
 router.post('/new', (req, res) => {
   Restaurant.create(req.body)
     .then(() => res.redirect('/'))
@@ -43,10 +43,10 @@ router.put('/edit/:id', (req, res) => {
 })
 
 // deal with anchor tag GET -> DELETE
-// 參考 stack overflow 
+// 參考 stack overflow
 // https://stackoverflow.com/questions/34926876/override-method-get-to-delete-in-nodejs-using-anchor-tag
 
-router.use('/delete/:id',(req, res, next) => {
+router.use('/delete/:id', (req, res, next) => {
   if (req.query._method === 'DELETE') {
     req.method = 'DELETE'
     req.url = req.path
