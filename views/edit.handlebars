@@ -1,6 +1,6 @@
 <h1 class="mb-1 restaurant-new-title">{{ restaurant.name }}</h1>
 <div class="container">
-  <form action="/restaurants/edit/{{ restaurant._id }}" id="form" method="post" novalidate>
+  <form action="/restaurants/edit/{{ restaurant._id }}?_method=PUT" id="form" method="post" novalidate>
     <div class="mb-3">
       <label for="restaurant-id" class="form-label">餐廳 ID</label>
       <input type="text" class="form-control" name="id" id="restaurant-id" placeholder="1" value="{{ restaurant.id }}" required>
