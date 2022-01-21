@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 // 根據 restaurant.json 來定義 schema
 const restaurantSchema = new Schema({
-  id: {
+  restaurant_id: {
     type: Number,
     required: true
   },

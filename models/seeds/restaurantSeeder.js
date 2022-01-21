@@ -1,10 +1,8 @@
-// 載入 mongoose 與 restaurant model
-const mongoose = require('mongoose')
+// 載入 mongoose 連線設定與 restaurant model
+const db = require('../../config/mongoose')
 const Restaurant = require('../restaurant')
 const restaurantList = require('../../restaurant.json').results
 
-// mongoose 連線設定
-require('../../config/mongoose')
 
 db.once('open', () => {
   console.log('mongodb connected!')
