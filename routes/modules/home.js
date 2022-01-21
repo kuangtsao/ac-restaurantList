@@ -35,6 +35,7 @@ router.post('/', (req, res) => {
   Restaurant.find()
     .lean()
     .sort(sortObject)
+    .collation({ locale: 'zh_Hant' })
     .then(restaurants => {
       res.render('index', { restaurants, findingStatus: true, sortOption })
     })
