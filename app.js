@@ -15,8 +15,6 @@ app.engine('handlebars', exphbs({
 // import local static files
 // css 和 js
 app.use(express.static('public'))
-// 所有餐廳清單
-let restaurantList = []
 
 // import body parser
 app.use(express.urlencoded({ extended: true }))
@@ -25,28 +23,13 @@ app.use(express.urlencoded({ extended: true }))
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
+// import db
+require('./config/mongoose')
 
 // import route
 const routes = require('./routes')
 app.use(routes)
 
-// import mongodb
-const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
-
-db.on('open', () => {
-  console.log('mongodb is connected.')
-})
-
-// 載入 restaurant model
-const Restaurant = require('./models/restaurant')
 
 app.listen(port, () => {
   console.log(`ac-restaurantList is running on http://localhost:${port}`)

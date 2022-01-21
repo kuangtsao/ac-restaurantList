@@ -1,15 +1,8 @@
-// 載入 mongoose 與 restaurant model
-const mongoose = require('mongoose')
+// 載入 mongoose 連線設定與 restaurant model
+const db = require('../../config/mongoose')
 const Restaurant = require('../restaurant')
 const restaurantList = require('../../restaurant.json').results
 
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true,useUnifiedTopology: true })
-
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 
 db.once('open', () => {
   console.log('mongodb connected!')
