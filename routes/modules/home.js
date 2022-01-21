@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
   Restaurant.find()
     .lean()
     .sort(sortObject)
-    .collation({ locale: 'zh_Hant' })
+    .collation({ locale: 'zh_Hant' }) // 添加以支援中文排序
     .then(restaurants => {
       res.render('index', { restaurants, findingStatus: true, sortOption })
     })
