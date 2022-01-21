@@ -4,12 +4,10 @@ const router = express.Router()
 // 載入 restaurant model
 const Restaurant = require('../../models/restaurant')
 
-let restaurantList = []
 // 首頁
 router.get('/', (req, res) => {
   Restaurant.find().lean()
     .then(restaurants => {
-      restaurantList = restaurants
       res.render('index', { restaurants, findingStatus: true })
     })
     .catch(error => console.error(error))
