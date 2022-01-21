@@ -3,7 +3,7 @@
   <form action="/restaurants/edit/{{ restaurant._id }}?_method=PUT" id="form" method="post" novalidate>
     <div class="mb-3">
       <label for="restaurant-id" class="form-label">餐廳 ID</label>
-      <input type="text" class="form-control" name="id" id="restaurant-id" placeholder="1" value="{{ restaurant.id }}" required>
+      <input type="text" class="form-control" name="restaurant_id" id="restaurant-id" placeholder="1" value="{{ restaurant.restaurant_id }}" required>
       <div class="valid-feedback"></div>
       <div class="invalid-feedback"></div>
     </div>

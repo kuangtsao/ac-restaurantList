@@ -35,23 +35,9 @@ router.get('/edit/:id', (req, res) => {
 })
 
 // 實作編輯功能
-// 暫時找不到原本 json 檔裡的數字 id 怎麽轉，先放著不修(這應該是原始資料設計的問題)，之後重構再弄
 router.put('/edit/:id', (req, res) => {
   const id = req.params.id
-  const {productId, name, name_en, category, image, location, phone, google_map, rating, description} = req.body
-  Restaurant.findById(id)
-    .then(restaurant => {
-      restaurant.name = name
-      restaurant.name_en = name_en
-      restaurant.category = category
-      restaurant.image = image
-      restaurant.location = location
-      restaurant.phone = phone
-      restaurant.google_map = google_map
-      restaurant.rating = rating
-      restaurant.description = description
-      return restaurant.save()
-    })
+  Restaurant.findByIdAndUpdate(id, req.body)
     .then(() => res.redirect(`/restaurants/show/${id}`))
     .catch(error => console.error(error))
 })
@@ -71,8 +57,7 @@ router.use('/delete/:id',(req, res, next) => {
 // 實作刪除功能
 router.delete('/delete/:id', (req, res) => {
   const id = req.params.id
-  Restaurant.findById(id)
-    .then(restaurant => restaurant.remove())
+  Restaurant.findByIdAndRemove(id)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
