@@ -16,7 +16,7 @@
     <div class="mb-3">
       <label for="restaurant-en-name" class="form-label">餐廳英文名稱</label>
       <input type="text" class="form-control" id="restaurant-en-name" name="name_en"
-      placeholder="Cafe LeBlanc">
+      placeholder="Cafe LeBlanc" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-category" class="form-label">分類</label>
@@ -37,7 +37,7 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-image" class="form-label">圖片</label>
-      <input type="url" class="form-control" id="restaurant-image" name="image" placeholder="提供圖片網址">
+      <input type="url" class="form-control" id="restaurant-image" name="image" placeholder="提供圖片網址" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-location" class="form-label">地址</label>
@@ -53,15 +53,15 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-map" class="form-label">Google 地圖</label>
-      <input type="url" class="form-control" name="google_map"  id="restaurant-map" placeholder="google 地圖網址">
+      <input type="url" class="form-control" name="google_map"  id="restaurant-map" placeholder="google 地圖網址" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-rating" class="form-label">評分</label>
-      <input type="number" class="form-control" name="rating" id="restaurant-rating" placeholder="評分，0.1~5">
+      <input type="number" class="form-control" name="rating" id="restaurant-rating" placeholder="評分，0.1~5" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-description" class="form-label">餐廳介紹</label>
-      <textarea name="description" id="restaurant-description" rows="5" class="form-control" placeholder="坐落於四軒茶屋的一處清靜的小巷，具有昭和復古感的裝潢，襯托著咖啡的香氣..."></textarea>
+      <textarea name="description" id="restaurant-description" rows="5" class="form-control" placeholder="坐落於四軒茶屋的一處清靜的小巷，具有昭和復古感的裝潢，襯托著咖啡的香氣..." required></textarea>
     </div>
     <button id="submit-btn" class="btn btn-success" type="submit">確定新增</button>
     <a href="/" class="btn btn-primary">返回首頁</a>
