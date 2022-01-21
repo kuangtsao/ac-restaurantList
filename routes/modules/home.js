@@ -15,7 +15,31 @@ router.get('/', (req, res) => {
 
 // 首頁 sort by 
 router.post('/', (req, res) => {
-  console.log(req.body)
+  const sortOption = req.body.sortOp
+  console.log(sortOption)
+  let sortObject
+  switch(sortOption) {
+    case '1':
+      sortObject = { name_en: 'asc' }
+      break
+    case '2':
+      sortObject = { name_en: 'desc' }
+      break
+    case '3':
+      sortObject = { location: 'asc' }
+      break
+    case '4':
+      sortObject = { category: 'asc' }
+    default:
+      sortObject = { _id: 'asc' }
+  }
+  Restaurant.find()
+    .lean()
+    .sort(sortObject)
+    .then(restaurants => {
+      res.render('index', { restaurants, findingStatus: true })
+    })
+    .catch(error => console.error(error))
 })
 
 // 搜尋
