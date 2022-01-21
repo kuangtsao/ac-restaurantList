@@ -4,10 +4,15 @@ const router = express.Router()
 // 載入 restaurant model
 const Restaurant = require('../../models/restaurant')
 
+// 存放 query 結果
+
+let restaurantList = []
+
 // 首頁
 router.get('/', (req, res) => {
   Restaurant.find().lean()
     .then(restaurants => {
+      restaurantList = restaurants
       res.render('index', { restaurants, findingStatus: true })
     })
     .catch(error => console.error(error))
@@ -38,6 +43,7 @@ router.post('/', (req, res) => {
     .sort(sortObject)
     .collation({ locale: 'zh_Hant' }) // 添加以支援中文排序
     .then(restaurants => {
+      restaurantList = restaurants
       res.render('index', { restaurants, findingStatus: true, sortOption })
     })
     .catch(error => console.error(error))
@@ -57,7 +63,7 @@ router.get('/search', (req, res) => {
       if (info.length > 0) {
         res.render('index', { restaurants: info, findingStatus: true, keyword: originKeyword })
       } else {
-        res.render('index', { restaurants: info , findingStatus: false, keyword: originKeyword })
+        res.render('index', { restaurants: restaurantList , findingStatus: false, keyword: originKeyword })
       }
     })
     .catch(error => console.error(error))
