@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 // 首頁 sort by 
 router.post('/', (req, res) => {
   const sortOption = req.body.sortOp
-  console.log(sortOption)
   let sortObject
   switch(sortOption) {
     case '1':
@@ -29,7 +28,7 @@ router.post('/', (req, res) => {
       sortObject = { location: 'asc' }
       break
     case '4':
-      sortObject = { category: 'asc' }
+      sortObject = { category: 'desc' }
     default:
       sortObject = { _id: 'asc' }
   }
@@ -37,7 +36,7 @@ router.post('/', (req, res) => {
     .lean()
     .sort(sortObject)
     .then(restaurants => {
-      res.render('index', { restaurants, findingStatus: true })
+      res.render('index', { restaurants, findingStatus: true, sortOption })
     })
     .catch(error => console.error(error))
 })
