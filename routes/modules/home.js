@@ -15,6 +15,11 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+// 首頁 sort by 
+router.post('/', (req, res) => {
+  console.log(req.body)
+})
+
 // 搜尋
 router.get('/search', (req, res) => {
   // 保留原始的搜尋字串
