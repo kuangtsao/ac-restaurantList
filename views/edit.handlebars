@@ -1,4 +1,4 @@
-<h1 class="mb-1 restaurant-new-title">新增餐廳</h1>
+<h1 class="mb-1 restaurant-new-title">{{ restaurant.name }}</h1>
 <div class="container">
   <form action="/restaurants/edit/{{ restaurant._id }}" id="form" method="post" novalidate>
     <div class="mb-3">
@@ -15,7 +15,7 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-en-name" class="form-label">餐廳英文名稱</label>
-      <input type="text" class="form-control" id="restaurant-en-name" name="name_en" value="{{ restaurant.name_en }}" placeholder="Cafe LeBlanc">
+      <input type="text" class="form-control" id="restaurant-en-name" name="name_en" value="{{ restaurant.name_en }}" placeholder="Cafe LeBlanc" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-category" class="form-label">分類</label>
@@ -35,7 +35,7 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-image" class="form-label">圖片</label>
-      <input type="url" class="form-control" id="restaurant-image" name="image" placeholder="提供圖片網址" value="{{ restaurant.image }}">
+      <input type="url" class="form-control" id="restaurant-image" name="image" placeholder="提供圖片網址" value="{{ restaurant.image }}" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-location" class="form-label">地址</label>
@@ -51,16 +51,16 @@
     </div>
     <div class="mb-3">
       <label for="restaurant-map" class="form-label">Google 地圖</label>
-      <input type="url" class="form-control" name="google_map" id="restaurant-map" placeholder="google 地圖網址" value="{{ restaurant.google_map }}">
+      <input type="url" class="form-control" name="google_map" id="restaurant-map" placeholder="google 地圖網址" value="{{ restaurant.google_map }}" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-rating" class="form-label">評分</label>
-      <input type="number" class="form-control" name="rating" id="restaurant-rating" placeholder="評分，0.1~5" value="{{ restaurant.rating }}">
+      <input type="number" class="form-control" name="rating" id="restaurant-rating" placeholder="評分，0.1~5" value="{{ restaurant.rating }}" required>
     </div>
     <div class="mb-3">
       <label for="restaurant-description" class="form-label">餐廳介紹</label>
       <textarea name="description" id="restaurant-description" rows="5" class="form-control"
-        placeholder="坐落於四軒茶屋的一處清靜的小巷，具有昭和復古感的裝潢，襯托著咖啡的香氣...">{{ restaurant.description }}</textarea>
+        placeholder="坐落於四軒茶屋的一處清靜的小巷，具有昭和復古感的裝潢，襯托著咖啡的香氣..." required>{{ restaurant.description }}</textarea>
     </div>
     <button id="submit-btn" class="btn btn-warning" type="submit">確定編輯</button>
     <a href="/" class="btn btn-primary">返回首頁</a>
