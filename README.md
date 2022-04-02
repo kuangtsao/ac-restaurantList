@@ -77,3 +77,5 @@ ac-restaurantList is running on http://localhost:3000
 - font-awesome 5.8.1
 - mongoose 6.1.6
 - handlebars-helpers 0.10.0
+- dotenv 8.2.0
+- bcryptjs 2.4.3
