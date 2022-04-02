@@ -17,6 +17,16 @@ app.engine('handlebars', exphbs({
   helpers: multihelpers,
   defaultLayout: 'main'
 }))
+// import express-session
+const session = require('express-session')
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}))
+
+
 // import local static files
 // css 和 js
 app.use(express.static('public'))
@@ -30,6 +40,10 @@ app.use(methodOverride('_method'))
 
 // import db
 require('./config/mongoose')
+
+// import passport
+const usePassport = require('./config/passport')
+usePassport(app)
 
 // import route
 const routes = require('./routes')
