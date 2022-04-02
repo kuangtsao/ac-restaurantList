@@ -8,7 +8,7 @@ const Restaurant = require('../restaurant')
 const User = require('../user')
 const restaurantList = require('../../restaurant.json').results
 
-// 暫時想不到怎麼用 array of object 漂亮的處理預設 user 先分成兩個
+// 暫時想不到怎麼用 array of object 漂亮的處理預設 user  先分成兩個
 const defaultUser1 = { 
     name: 'user1',
     email: 'user1@example.com',
@@ -20,9 +20,10 @@ const defaultUser2 = {
     password: '12345678'
   }
 
+// 暫時想不到怎麼漂亮的用 promise，分成兩個
 db.once('open', () => {
   console.log('mongodb connected!')
-  console.log('createing users...')
+  console.log('createing user1...')
   // 先產生 user 再丟入 restaurant list///
   // 密碼加鹽
   bcrypt
@@ -33,6 +34,13 @@ db.once('open', () => {
         email: defaultUser1.email,
         password: hash
     }))
+    .catch(err => console.log(err))
+})
+
+db.once('open', () => {
+  console.log('createing user2...')
+  bcrypt
+    .genSalt(10)
     .then(salt => bcrypt.hash(defaultUser2.password, salt))
     .then(hash => User.create({
         name: defaultUser2.name,
@@ -40,8 +48,7 @@ db.once('open', () => {
         password: hash
     }))
     .catch(err => console.log(err))
-    .finally(() => process.exit())
-})
+  })
 
 db.once('open', () => {
   console.log('loading restaurantList')
