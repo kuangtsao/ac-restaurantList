@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo:4.2.18-bionic
     restart: always
-    container_name: mongo-server
+    container_name: mongo-restaurant-server
     volumes:
     - ./mongodb/configdb:/data/configdb
     - ./mongodb/db:/data/db
