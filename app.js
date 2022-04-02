@@ -45,10 +45,15 @@ require('./config/mongoose')
 const usePassport = require('./config/passport')
 usePassport(app)
 
+// import connect-flash
+const flash = require('connect-flash')
+app.use(flash())
 // 取得 user 資訊的 middleware
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')  
   next()
 })
 
