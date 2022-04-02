@@ -1,3 +1,8 @@
+// 載入環境變數
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 // express 基礎設定
 const express = require('express')
 const app = express()
