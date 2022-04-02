@@ -45,6 +45,13 @@ require('./config/mongoose')
 const usePassport = require('./config/passport')
 usePassport(app)
 
+// 取得 user 資訊的 middleware
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
+
 // import route
 const routes = require('./routes')
 app.use(routes)
