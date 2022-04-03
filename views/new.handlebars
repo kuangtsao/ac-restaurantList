@@ -2,6 +2,10 @@
 <div class="container">
   <form action="/restaurants/new" id="form" method="post" novalidate>
     <div class="mb-3">
+      <label for="restaurant-id" class="form-label">擁有者電子信箱</label>
+      <input type="text" class="form-control-plaintext" name="owner" value="{{ email }}" id="restaurant-owner" readonly>
+    </div>
+    <div class="mb-3">
       <label for="restaurant-id" class="form-label">餐廳 ID</label>
       <input type="number" class="form-control" name="restaurant_id" id="restaurant-id" placeholder="1" required>
       <div class="valid-feedback"></div>
