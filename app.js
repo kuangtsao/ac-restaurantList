@@ -26,7 +26,6 @@ app.use(session({
   saveUninitialized: true
 }))
 
-
 // import local static files
 // css 和 js
 app.use(express.static('public'))

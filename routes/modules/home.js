@@ -69,7 +69,7 @@ router.get('/search', (req, res) => {
       if (info.length > 0) {
         res.render('index', { restaurants: info, findingStatus: true, keyword: originKeyword })
       } else {
-        res.render('index', { restaurants: restaurantList , findingStatus: false, keyword: originKeyword })
+        res.render('index', { restaurants: restaurantList, findingStatus: false, keyword: originKeyword })
       }
     })
     .catch(error => console.error(error))
