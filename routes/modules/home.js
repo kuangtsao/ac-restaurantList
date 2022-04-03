@@ -10,7 +10,8 @@ let restaurantList = []
 
 // 首頁
 router.get('/', (req, res) => {
-  Restaurant.find().lean()
+  const email = req.user.email
+  Restaurant.find({ owner: email }).lean()
     .then(restaurants => {
       restaurantList = restaurants
       res.render('index', { restaurants, findingStatus: true })
@@ -38,7 +39,9 @@ router.post('/', (req, res) => {
     default:
       sortObject = { _id: 'asc' }
   }
-  Restaurant.find()
+
+  const email = req.user.email
+  Restaurant.find({ owner: email })
     .lean()
     .sort(sortObject)
     .collation({ locale: 'zh_Hant' }) // 添加以支援中文排序
@@ -51,12 +54,15 @@ router.post('/', (req, res) => {
 
 // 搜尋
 router.get('/search', (req, res) => {
+  // user email 作為主鍵
+  const email = req.user.email
   // 保留原始的搜尋字串
   const originKeyword = req.query.keyword
   // 搜尋字串去除空白與所有關鍵字小寫
   const keyword = originKeyword.split(' ').join('').toLowerCase()
   // 利用 mongoose 下 category || name || name_en
   Restaurant.find({
+    $and: [{ owner: email }],
     $or: [{ category: { $regex: keyword } }, { name: { $regex: keyword } }, { name_en: { $regex: keyword, $options: 'i' } }]
   }).lean()
     .then(info => {
