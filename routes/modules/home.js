@@ -10,7 +10,6 @@ let restaurantList = []
 
 // 首頁
 router.get('/', (req, res) => {
-  console.log('在首頁')
   Restaurant.find().lean()
     .then(restaurants => {
       restaurantList = restaurants
