@@ -14,7 +14,8 @@ router.get('/show/:id', (req, res) => {
 // 新增餐廳相關
 // 渲染新增頁面
 router.get('/new', (req, res) => {
-  res.render('new')
+  const email = req.user.email
+  res.render('new', { email })
 })
 
 // 新增表單 post 相關邏輯
