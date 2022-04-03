@@ -80,5 +80,6 @@ ac-restaurantList is running on http://localhost:3000
 - dotenv 8.2.0
 - bcryptjs 2.4.3
 - express-session 1.17.1
-- passport@0.4.1 
-- passport-local@1.0.0
+- passport 0.4.1 
+- passport-local 1.0.0
+- passport-facebook 3.0.0
