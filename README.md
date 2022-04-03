@@ -1,4 +1,4 @@
-# 餐廳清單 1.0
+# 餐廳清單 2.0
 ## 簡介
 電影清單的另一個實作：餐廳清單
 
@@ -52,7 +52,12 @@ $ which docker-compose
 [project path] $ docker-compose up -d
 ```
 
-5. 注入種子資料
+5. 設定環境變數
+參考 `.env.example` 這個檔案設定變數  
+`FACEBOOK_ID` 與 `FACEBOOK_SECRET`需要到 [Meta foe Developers](https://developers.facebook.com/) 進行申請，可參考[文件](https://developers.facebook.com/docs/facebook-login)與[課程文件](https://lighthouse.alphacamp.co/courses/118/units/25462)進行設定。  
+`SESSION_SECRET` 可以依需求自行替換
+
+6. 注入種子資料
 請先確認是否還在 clone 下來的路徑
 ```
 [project path] $ npm run seed
@@ -83,3 +88,10 @@ ac-restaurantList is running on http://localhost:3000
 - passport 0.4.1 
 - passport-local 1.0.0
 - passport-facebook 3.0.0
+
+## 待改進部分
+1. 利用 views/partial 模板與 flash 重構網頁顯示訊息
+2. 第三方登入新增 google 的選項
+3. model/seeds/restaurantSeeder.js
+  a. array of objects 與 promise 的配合
+  b. 注入餐廳資料時，利用 _id 作為主鍵

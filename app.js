@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 // express 基礎設定
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 // import and setting handlebars
 const exphbs = require('express-handlebars')
